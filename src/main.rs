@@ -1,5 +1,5 @@
 use axum::{response::Json, routing::get, Router};
-use axum-hello-world::aboutme::aboutme::{Aboutme, aboutme};
+use axum_hello_world::aboutme::aboutme::{Aboutme, aboutme};
 async fn get_about_me() -> Json<Aboutme> {
     let aboutme = aboutme();
     Json(aboutme)
