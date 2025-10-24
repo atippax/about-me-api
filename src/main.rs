@@ -1,12 +1,13 @@
-use axum::{routing::get, Router};
-
-async fn hello_world() -> &'static str {
-    "Hello, world!"
+use axum::{response::Json, routing::get, Router};
+use rust_api::aboutme::aboutme::{Aboutme, aboutme};
+async fn get_about_me() -> Json<Aboutme> {
+    let aboutme = aboutme();
+    Json(aboutme)
 }
 
 #[shuttle_runtime::main]
 async fn main() -> shuttle_axum::ShuttleAxum {
-    let router = Router::new().route("/", get(hello_world));
+    let router = Router::new().route("/", get(get_about_me));
 
     Ok(router.into())
 }
